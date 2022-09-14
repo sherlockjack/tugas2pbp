@@ -18,7 +18,7 @@ Supaya membuat sebuah task tidak saling bertabrakan ketika menjalankan 2 localho
 
 Membuat fungsi request didalam views.py dan mengembalikan nilainya.
 Setelah itu mengatur url pattern dari dalam urls.py
-Dan setelah itu kita pergi ke katalog.html membuat sebuah list yang sama.
+Setelah itu kita pergi ke katalog.html membuat sebuah list yang sama.
 Setelah itu kita ngasih di urls.py yang ada di project_django untuk membuat urlsnya katalog/.
 Setelah itu kita membuat migration dan migrates dan kita push ke git, kita mengambil HEROKU_API KEY dan HEROKU_APP_NAME.
 Setelah itu deploy ke Heroku dan selesai.
