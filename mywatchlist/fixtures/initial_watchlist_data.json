@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "Detective Conan",
+            "rating": 5,
+            "release_date": "1996-01-08",
+            "review":"Seorang Detektif SMA yang berubah menjadi bocah"
+        }
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 2,
+        "fields": {
+            "watched": false,
+            "title": "One Piece Film: Red",
+            "rating": 5,
+            "release_date": "2022-08-06",
+            "review":"Movie One Piece, dimana teman masa kecil Luffy"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 3,
+        "fields": {
+            "watched": true,
+            "title": "Kimi no Nawa",
+            "rating": 5,
+            "release_date": "2016-08-26",
+            "review":"Kedua orang yang saling ditakdirkan untuk saling melengkapi"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 4,
+        "fields": {
+            "watched": true,
+            "title": "Attack On Titan Season 4",
+            "rating": 5,
+            "release_date": "2013-04-07",
+            "review":"Authornya adalah orang psikopat"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 5,
+        "fields": {
+            "watched": true,
+            "title": "Spy X Family",
+            "rating": 5,
+            "release_date": "2022-04-09",
+            "review":"Keluarga palsu tapi kayak keluarga asli"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 6,
+        "fields": {
+            "watched": true,
+            "title": "Sket Dance",
+            "rating": 5,
+            "release_date": "2011-04-07",
+            "review":"Alasan aku berbuat baik"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Boruto: Naruto Next Generation",
+            "rating": 2,
+            "release_date": "2017-04-05",
+            "review":"Sekuel Naruto yang penuh potensi, tapi eksekusinya kurang baik"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 8,
+        "fields": {
+            "watched": true,
+            "title": "Haikyuu!!",
+            "rating": 5,
+            "release_date": "2014-04-06",
+            "review":"Pendek? Aku bisa terbang tinggi!"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 9,
+        "fields": {
+            "watched": true,
+            "title": "FMAB",
+            "rating": 5,
+            "release_date": "2009-04-05",
+            "review":"Ending yang baik"
+        } 
+    },
+    {
+        "model": "mywatchlist.WatchlistItem",
+        "pk": 10,
+        "fields": {
+            "watched": true,
+            "title": "Komi San wa Comushyou desu",
+            "rating": 5,
+            "release_date": "2021-10-07",
+            "review":"Seorang cewe cantik yang berparas malaikat tak tahu cara berkomunikasi ingin mencari 100 teman"
+        } 
+    }
+]
