@@ -21,9 +21,9 @@ dan setelah itu saya deploy
 
 1. `~/mywatchlist/html`<br><br>
 
-   ![postman_HTML_Tugas]https://github.com/sherlockjack/tugas2pbp/blob/main/mywatchlist/1pbp.JPG
+   ![postman_HTML_Tugas](https://github.com/sherlockjack/tugas2pbp/blob/main/mywatchlist/1pbp.JPG)
 2. `~/mywatchlist/json`<br><br>
-   ![postman_JSON_Tugas]https://github.com/sherlockjack/tugas2pbp/blob/main/mywatchlist/3pbp.JPG
+   ![postman_JSON_Tugas](https://github.com/sherlockjack/tugas2pbp/blob/main/mywatchlist/3pbp.JPG)
 
 3. `~/mywatchlist/xml`<br><br>
-   ![postman_XML_Tugas]https://github.com/sherlockjack/tugas2pbp/blob/main/mywatchlist/2pbp.JPG
+   ![postman_XML_Tugas](https://github.com/sherlockjack/tugas2pbp/blob/main/mywatchlist/2pbp.JPG)
