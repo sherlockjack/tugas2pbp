@@ -26,4 +26,4 @@ dan setelah itu saya deploy
    ![postman_JSON_Tugas]
 
 3. `~/mywatchlist/xml`<br><br>
-   ![postman_XML_Tugas3]
+   ![postman_XML_Tugas]
