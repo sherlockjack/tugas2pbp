@@ -10,7 +10,7 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200) 
         
 
-    def test_json(self):
+    def test_json(self): 
         client = Client()
         response = client.get(reverse('mywatchlist:show_json'))
 
