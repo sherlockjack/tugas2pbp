@@ -17,7 +17,7 @@ from todolist.models import todolistItem #Kalau masih abu abu segera buat moduln
 
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
-    userdata=todolistItem.objects.all()
+    userdata=todolistItem.objects.filter(user=request.user)
     context = {
     'user_data' : userdata,
     'last_login': request.COOKIES['last_login'],
