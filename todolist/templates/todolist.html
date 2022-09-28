@@ -12,6 +12,7 @@
         <th>Date</th>
         <th>Title</th>
         <th>Description</th>
+        <th>Status</th>
     </tr>
     {% for i in user_data %}
     <tr>
@@ -19,6 +20,22 @@
         <th>{{i.date}}</th>
         <th>{{i.title}}</th>
         <th>{{i.description}}</th>
+        <th>
+        {% if i.is_finished %}
+        Selesai
+        {% else %}
+            Belum selesai
+        {% endif %}
+        </th>
+
+        <th>
+        {% if i.is_finished %}
+        <button><a href="{% url 'todolist:finishedtask' i.id %}">Not Finished?</a></button>
+        {% else %}
+        <button><a href="{% url 'todolist:finishedtask' i.id %}">Finished?</a></button>
+        {% endif %}
+        </th>
+        <th><button><a href="{% url 'todolist:deletetask' i.id %}">Delete</a></button></th>
     </tr>
     {% endfor %}
 </table>

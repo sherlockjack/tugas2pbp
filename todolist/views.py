@@ -20,7 +20,6 @@ def show_todolist(request):
     userdata=todolistItem.objects.filter(user=request.user)
     context = {
     'user_data' : userdata,
-    'last_login': request.COOKIES['last_login'],
     }
     return render(request, "todolist.html", context)
 
@@ -76,4 +75,20 @@ def createtask(request):
      context = {"forms": form,}
 
      return render(request, 'createtask.html', context)
+    
+@login_required(login_url='/todolist/login/')
+def deletetask(request,id):
+    hapus=todolistItem.objects.get(pk=id)
+    if hapus:
+        hapus.delete()
+        return redirect('todolist:show_todolist')
+    
+
+@login_required(login_url='/todolist/login/')
+def finishedtask(request,id):
+    finish=todolistItem.objects.get(pk=id)
+    if finish:
+        finish.is_finished=False if finish.is_finished else True
+        finish.save()
+        return redirect('todolist:show_todolist')
     
