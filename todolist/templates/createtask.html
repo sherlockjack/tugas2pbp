@@ -1,39 +1,43 @@
 {% extends 'base.html' %}
+{% block meta %}
+<style>
+    .semua{
+        height:100vh;
+    }
+
+</style>
+{% endblock meta %}
 
 {% block content %}
+<div class="bg-dark text-white semua">
+<div class="bg-danger text-white">
 <h1>Welcome, {{request.user.username.title }}</h1>
 <h2>Let's create new Task here </h2>
-
-
-<div class = "createtask">
-    <form method="POST" action="">
-        {% csrf_token %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}     
-        <table>
-            <tr>
-                <td>Title: </td>
-                <td><input type="text" name="title" placeholder="PBP" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Description: </td>
-                <td><input type="text" name="description" placeholder="Demo Tugas 4" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Tambah"></td>
-            </tr>
-        </table>
-    </form>
-
-
 </div>
 
+<div class = "createtask bg-dark text-white semua">
+    <form method="POST" action="">
+        <table>
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <h5>{{ message }}</h5>
+            {% endfor %}
+        {% endif %}     
+        <div class="bg-dark text-white semua">
+                <h4>Title: </h4>
+                <input type="text" name="title" placeholder="PBP" class="form-control">
+                    
+                <br>
+                <h4>Description: </h4>
+                <input type="text" name="description" placeholder="Demo Tugas 4" class="form-control">
+                <br>    
+                <div class="d-flex justify-content-center bg-dark text-white">
+                <button type="submit" class="btn btn-primary ">Submit</button>
+                </div>
+        </div>
+        </table>
+    </form>
+</div>
+</div>
 {% endblock content %}

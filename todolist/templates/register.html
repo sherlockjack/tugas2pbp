@@ -2,13 +2,17 @@
 
 {% block meta %}
 <title>Registrasi Akun</title>
+<style>
+.login{
+    height:100vh;
+}</style>
 {% endblock meta %}
 
 {% block content %}  
 
-<div class = "login">
+<div class = "login bg-dark text-white">
     
-    <h1>Formulir Registrasi</h1>  
+    <h1 class="bg-danger text-white">Formulir Registrasi</h1>  
 
         <form method="POST" >  
             {% csrf_token %}  

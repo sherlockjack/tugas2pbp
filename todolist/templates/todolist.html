@@ -1,44 +1,54 @@
 {% extends 'base.html' %}
-
+{% block meta %}
+<style>
+     .card{
+      transition: all 0.2s ease;
+    }
+    .card:hover {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+</style>
+{% endblock meta %}
 {% block content %}
 
+<div class="bg-dark text-white">
+    <div class="bg-danger text-white">
 <h1>Tugas PBP 4</h1>
 
 <h3>Welcome, {{request.user.username.title }}</h3>
+    </div>
 
 <table>
-    <tr>
-        <th>User</th>
-        <th>Date</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Status</th>
-    </tr>
     {% for i in user_data %}
-    <tr>
-        <th>{{i.user}}</th>
-        <th>{{i.date}}</th>
-        <th>{{i.title}}</th>
-        <th>{{i.description}}</th>
-        <th>
+    <div class="col-sm-6 col-md-4 p-3">
+    <div class="card bg-dark text-white border-white" style="width: 18rem;">
+        <div class="card-body hover">
+            <h5 class="card-title">Title: {{i.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Description: {{i.description}}</h6>
+            <p class="card-text">
         {% if i.is_finished %}
-        Selesai
+        Status: Selesai
         {% else %}
-            Belum selesai
+        Status: Belum selesai
         {% endif %}
-        </th>
-
-        <th>
+    </p>
+       <div class="btn  justify-content-center ">
         {% if i.is_finished %}
-        <button><a href="{% url 'todolist:finishedtask' i.id %}">Not Finished?</a></button>
+        <a href="{% url 'todolist:finishedtask' i.id %}" class="card-link btn btn-primary" role="button">Not Finished?</a>
         {% else %}
-        <button><a href="{% url 'todolist:finishedtask' i.id %}">Finished?</a></button>
+        <a href="{% url 'todolist:finishedtask' i.id %}"  class="card-link btn btn-primary" role="button">Finished?</a>
         {% endif %}
-        </th>
-        <th><button><a href="{% url 'todolist:deletetask' i.id %}">Delete</a></button></th>
+        <a href="{% url 'todolist:deletetask' i.id %}" class="card-link btn btn-primary"role="button">Delete</a>
+    </div>  
+    </div>
+</div>
+</div>
     </tr>
     {% endfor %}
 </table>
-<button><a href="{% url 'todolist:createtask' %}">Tambah Task Baru</a></button>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+<a href="{% url 'todolist:createtask' %}" class="btn btn-primary" role="button">Tambah Task Baru</a>
+<a href="{% url 'todolist:logout' %}"class="btn btn-primary"  role="button">Logout</a>
+</div>
 {% endblock content %}
