@@ -8,47 +8,111 @@
       opacity: 0.8;
       transform: scale(1.1);
     }
+    .horse{
+        height:100vh;
+    }
 </style>
 {% endblock meta %}
 {% block content %}
-
-<div class="bg-dark text-white">
-    <div class="bg-danger text-white">
-<h1>Tugas PBP 4</h1>
-
-<h3>Welcome, {{request.user.username.title }}</h3>
-    </div>
-
-<table>
-    {% for i in user_data %}
+<script>
+     function isikonten(title,description,is_finished,idmeter) {
+        var status="";
+        
+        if(is_finished==true){
+            status="Selesai";
+        }else{status="Belum Selesai"}
+      $("#Tabel").append(`
+      <table>
     <div class="col-sm-6 col-md-4 p-3">
     <div class="card bg-dark text-white border-white" style="width: 18rem;">
         <div class="card-body hover">
-            <h5 class="card-title">Title: {{i.title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Description: {{i.description}}</h6>
+            <h5 class="card-title">Title: ${title}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Description: ${description}</h6>
             <p class="card-text">
-        {% if i.is_finished %}
-        Status: Selesai
-        {% else %}
-        Status: Belum selesai
-        {% endif %}
+        Status : ${status}
     </p>
        <div class="btn  justify-content-center ">
-        {% if i.is_finished %}
-        <a href="{% url 'todolist:finishedtask' i.id %}" class="card-link btn btn-primary" role="button">Not Finished?</a>
+        {% if is_finished %}
+        <a href="/todolist/finishedtask/${idmeter}" class="card-link btn btn-primary" role="button">Not Finished?</a>
         {% else %}
-        <a href="{% url 'todolist:finishedtask' i.id %}"  class="card-link btn btn-primary" role="button">Finished?</a>
+        <a href="/todolist/finishedtask/${idmeter}"  class="card-link btn btn-primary" role="button">Finished?</a>
         {% endif %}
-        <a href="{% url 'todolist:deletetask' i.id %}" class="card-link btn btn-primary"role="button">Delete</a>
+        <a href="/todolist/deletetask/${idmeter}" class="card-link btn btn-primary"role="button">Delete</a>
     </div>  
     </div>
 </div>
 </div>
     </tr>
-    {% endfor %}
 </table>
+      `)
+    }
 
-<a href="{% url 'todolist:createtask' %}" class="btn btn-primary" role="button">Tambah Task Baru</a>
+    $(document).ready(function() {
+      $.get("{% url 'todolist:show_todolist_json' %}", function(user_data) {
+        for (const task of user_data) {
+            if(task["user_id"]=="{{ids}}"){
+            isikonten(task["title"], task["description"],task["is_finished"],task["id"])
+            }
+        }
+      }, "json")
+
+      $("form").submit(function(event) {
+        event.preventDefault()
+        var form = {
+          title: $("#title").val(),
+          description: $("#description").val(),
+          id:$("#id").val(),
+          csrfmiddlewaretoken: "{{ csrf_token }}",
+        } 
+        $.post("{% url 'todolist:add_task' %}", form, function(task) {
+            isikonten(task["title"], task["description"],false,task["id"])
+        }, "json")
+      })
+    })
+
+
+</script>
+<div class="bg-dark text-white horse">
+    <div class="bg-danger text-white">
+<h1>Tugas PBP 4</h1>
+
+<h3>Welcome, {{request.user.username.title }}</h3>
+    </div>
+<div id="Tabel">
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" id="modalBtn" class="btn btn-primary" onclick="$('#staticBackdrop').modal('show')">
+    Tambah Task
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade text-dark" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Task</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <table>
+                    <h3>Title: </h3>
+                    <input type="text" id="title" name="title" placeholder="PBP" class="form-control">   
+                    <br>
+                    <h3>Description: </h3>
+                    <input type="text" id="description" name="description" placeholder="Demo Tugas 4" class="form-control">
+                    <br>
+                </table>
+                    <input class="btn btn-dark" data-bs-dismiss="modal" type="submit" value="Tambah">
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <a href="{% url 'todolist:logout' %}"class="btn btn-primary"  role="button">Logout</a>
 </div>
+
 {% endblock content %}

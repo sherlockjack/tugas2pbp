@@ -4,6 +4,7 @@ from django.core import serializers
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.http import JsonResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -20,6 +21,7 @@ def show_todolist(request):
     userdata=todolistItem.objects.filter(user=request.user)
     context = {
     'user_data' : userdata,
+    'ids': request.user.id,
     }
     return render(request, "todolist.html", context)
 
@@ -92,3 +94,15 @@ def finishedtask(request,id):
         finish.save()
         return redirect('todolist:show_todolist')
     
+def show_todolist_json(request):
+    tasks = list(todolistItem.objects.all().values())
+    return JsonResponse(tasks, safe=False)
+
+
+def add_task(request):
+    form = TaskForm(request.POST)
+    form.instance.user = request.user
+    if form.is_valid():
+        form.save()
+        return JsonResponse({"title": form.instance.title , "description": form.instance.description,"id":form.instance.pk})
+    return redirect("todolist:show_todolist")
